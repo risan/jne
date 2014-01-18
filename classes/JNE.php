@@ -209,4 +209,18 @@ class JNE
         $url = sprintf('%s/%s', self::BASE_URL, self::TARIFF_URL);
         return file_get_contents($url, false, $context);
     }
+
+
+    /**
+     * Method for checking whether the CAPTCHA is valid or note
+     * 
+     * @param   string  $html   The HTML response page
+     * @return  bool    Return TRUE if the CAPTCHA is correct, FALSE otherwise
+     * @access  private
+     */
+    private function validateCAPTCHA($html)
+    {
+        if (strpos($html, 'Wrong Captcha') === false) return false;
+        return true;
+    }
 }
