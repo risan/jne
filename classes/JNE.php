@@ -133,21 +133,53 @@ class JNE
 
 
     /**
+     * Method for retrieving all required input from the submitted form
+     * 
+     * @return  array   An associative array that hold POST data
+     * @access  private
+     */
+    private function getAllInput()
+    {
+        // If on eof the required data is not exist, redirect back!
+        if (!isset($_POST['origin_code'])           || 
+            !isset($_POST['destination_code'])      ||
+            !isset($_POST['captcha_session_id'])    ||
+            !isset($_POST['from'])                  ||
+            !isset($_POST['to'])                    ||
+            !isset($_POST['weight'])                ||
+            !isset($_POST['captcha'])) {
+
+            header('location: index.php');
+            die();
+        } 
+
+        return array(
+            'origin_code'           => htmlentities(trim($_POST['origin_code'])),
+            'destination_code'      => htmlentities(trim($_POST['destination_code'])),
+            'captcha_session_id'    => htmlentities(trim($_POST['captcha_session_id'])),
+            'from'                  => htmlentities(trim($_POST['from'])),
+            'to'                    => htmlentities(trim($_POST['to'])),
+            'weight'                => (float) trim($_POST['weight']),
+            'captcha'               => htmlentities(trim($_POST['captcha']))
+        );
+    }
+
+
+    /**
      * Method for sending POST request to tariff checker endpoint
      * 
      * @param   array   $data       An array that hold POST data
-     * @param   string  $sessionID  Session ID of CAPTCHA image
      * @return  string  HTML string of response page
      * @access  private
      */
-    private function sendPOSTRequest($data, $sessionID)
+    private function sendPOSTRequest($data)
     {
 
         // Prepare HTTP header
         $options = array(
             'http'  => array(
                 'header' => "Content-type: application/x-www-form-urlencoded\r\n" .
-                            "Cookie: PHPSESSID={$sessionID}\r\n",
+                            "Cookie: PHPSESSID={$data['captcha_session_id']}\r\n",
                 'method' => "POST",
                 'content'=> http_build_query($data)
             )
