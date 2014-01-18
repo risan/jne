@@ -99,7 +99,7 @@ class JNE
             die();
         }
 
-        echo $response;
+        echo($response);
     }
 
 
@@ -255,7 +255,7 @@ class JNE
      */
     private function validateCAPTCHA($html)
     {
-        if (strpos($html, 'Wrong Captcha') === false) return false;
+        if (strpos($html, 'Wrong Captcha') !== false) return false;
         return true;
     }
 
