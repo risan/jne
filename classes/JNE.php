@@ -1,4 +1,10 @@
 <?php
+/**
+ * JNE Class - Simple all-in-one JNE crawler
+ * 
+ * @author  Risan Bagja Pradana <risanbagja@yahoo.com>
+ * @package JNE
+ */
 class JNE
 {
     // Base URL of JNE website
