@@ -1,7 +1,12 @@
 <?php
+// Include our JNE class
 require_once('classes/JNE.php');
+
+// Create an instance of JNE class
 $jne = new JNE();
+// Get JNE homepage session ID
 $sessionID = $jne->getSessionID();
+// Get JNE CAPTCHA for tariff cheking
 $captcha = $jne->getCAPTCHA();
 ?><!DOCTYPE html>
 <html>
