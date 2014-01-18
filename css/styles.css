@@ -1,0 +1,100 @@
+body { 
+    font-family: arial;
+    font-size: 100%;
+    color: #666;
+    background: #f0f0f0;
+}
+
+input[type=text] {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 5px;
+    outline: none;
+}
+
+input[type=text]:hover {
+    background: #fafafa;
+    border: 1px solid #ccc;
+}
+
+input[type=text]:focus {
+    background: #fafafa;
+    border: 1px solid #3498db;
+}
+
+input[type=submit] {
+    text-transform: uppercase;
+    color: #fff;
+    padding: 7px 20px;
+    background: #e74c3c;
+    border: 1px solid #c0392b;
+    cursor: pointer;
+    outline: none;
+}
+
+input[type=submit]:hover {
+    background: #c0392b;
+}
+
+.container {
+    width: 500px;
+    padding: 20px;
+    margin: auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.input-group {
+    margin-bottom: 5px;
+}
+
+.input-group label {
+    display: inline-block;
+    width: 110px;
+}
+
+.input-group input[type=text] {
+    width: 340px;    
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.input-group .captcha {
+    width: 200px;
+    border: 1px solid #ddd;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.input-group .captcha-field {
+    width: 200px !important;
+}
+
+.autocomplete-suggestions { 
+    font-size: 14px;
+    margin-top: 2px;
+    background: #f4f4f4; 
+    border: 1px solid #ccc; 
+    cursor: default; 
+    overflow: auto; 
+}
+
+.autocomplete-suggestion { 
+    padding: 4px 10px; 
+    white-space: nowrap; 
+    overflow: hidden; 
+}
+
+.autocomplete-selected { 
+    background: #ddd; 
+}
+
+.autocomplete-suggestions strong { 
+    font-weight: normal; 
+    color: #3399FF; 
+}
