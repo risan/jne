@@ -1,4 +1,6 @@
 <?php
+// Start a session
+session_start();
 // Include our JNE class
 require_once('classes/JNE.php');
 
