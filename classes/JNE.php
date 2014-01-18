@@ -112,17 +112,17 @@ class JNE
      */
     public function old($input)
     {
-        // If there is no flashed old data, return null
-        if (!isset($_SESSION['old'])) return null;
+        // If there is no flashed old data, return an empty string
+        if (!isset($_SESSION['old'])) return '';
 
-        // If session old is not an array, reset!
+        // If session old is not an array, return an empty string
         if (!is_array($_SESSION['old'])) {
             unset($_SESSION['old']);
-            return null;
+            return '';
         }
 
-        // If the requested key is not exits, reutrn null!
-        if (!isset($_SESSION['old'][$input])) retun null;
+        // If the requested key is not exits, return an empty string
+        if (!isset($_SESSION['old'][$input])) return '';
 
         // Get the old input and unset it!
         $old = $_SESSION['old'][$input];
