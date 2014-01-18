@@ -36,21 +36,24 @@ $captcha = $jne->getCAPTCHA();
                 <div class="input-group">
                     <label for="from">From</label>
                     <input type="text" name="from" id="from"
-                        value="<?php echo $jne->old('from') ?>">
+                        value="<?php echo $jne->old('from') ?>"
+                        autocomplete="off">
                 </div>
 
                 <!-- TO fields. ============================================-->
                 <div class="input-group">
                     <label for="to">To</label>
                     <input type="text" name="to" id="to"
-                        value="<?php echo $jne->old('to') ?>">
+                        value="<?php echo $jne->old('to') ?>"
+                        autocomplete="off">
                 </div>
 
                 <!-- WEIGHT fields. ========================================-->
                 <div class="input-group">
                     <label for="weight">Weight (kgs)</label>
                     <input type="text" name="weight" id="weight"
-                        value="<?php echo $jne->old('weight') ?>">
+                        value="<?php echo $jne->old('weight') ?>"
+                        autocomplete="off">
                 </div>
 
                 <!-- CAPTCHA image. ========================================-->
@@ -64,7 +67,7 @@ $captcha = $jne->getCAPTCHA();
                 <div class="input-group">
                     <label for="captcha">CAPTCHA</label>
                     <input type="text" name="captcha" id="captcha" 
-                        class="captcha-field">
+                        class="captcha-field" autocomplete="off">
                 </div>
 
                 <!-- SUBMIT button. ========================================-->
