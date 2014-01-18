@@ -80,6 +80,23 @@ class JNE
 
 
     /**
+     * Method for getting the result of tariff checker
+     * 
+     * @return  void
+     * @access  public
+     */
+    public function getResult()
+    {
+        // Get all required input
+        $data = $this->getAllInput();
+        // Send POST request
+        $response = $this->sendPOSTRequest($data);
+
+        echo $response;
+    }
+
+
+    /**
      * Method for extracting PHPSESSID cookie
      * 
      * @param   array   $headers    An array that hold HTTP header data
