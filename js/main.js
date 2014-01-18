@@ -34,6 +34,8 @@ APP.DOM.init = function() {
     APP.DOM.sessionID = $("#session_id");   // Hidden input that hold session ID
     APP.DOM.originCode = $("#origin_code");
     APP.DOM.destinationCode = $("#destination_code");
+    APP.DOM.captcha = $("#captcha");
+    APP.DOM.submit = $("#submit");
 }
 
 
@@ -44,7 +46,10 @@ APP.DOM.attachEvents = function() {
     // Check code location on blur
     APP.DOM.from.blur(APP.validateLocation);
     APP.DOM.to.blur(APP.validateLocation);
+    // Check weight field on blur
     APP.DOM.weight.blur(APP.validateWeight);
+    // Validate form before submit
+    APP.DOM.submit.click(APP.validateForm);
 }
 
 
@@ -72,6 +77,49 @@ APP.validateWeight = function(event) {
     if (isNaN(parseFloat(weight)) || !isFinite(weight)) APP.DOM.weight.val("");
     // If less than a zero, clear it!
     if (parseFloat(weight) <= 0) APP.DOM.weight.val("");
+}
+
+
+/*****************************************************************************\
+ * VALIDATE FORM INPUT
+\*****************************************************************************/
+APP.validateForm = function(event) {
+    // Check whether "from" field is a valid location
+    var originCode = APP.DOM.originCode.val().trim();
+    if (!originCode) {
+        APP.DOM.from.val("").focus();
+        event.preventDefault();
+        return false;
+    }
+
+    // Check whether "to" field is a valid location
+    var destinationCode = APP.DOM.destinationCode.val().trim();
+    if (!destinationCode) {
+        APP.DOM.to.val("").focus();
+        event.preventDefault();
+        return false;
+    }
+
+    // Check whether weight has a valid value
+    var weight = APP.DOM.weight.val().trim();
+    if (isNaN(parseFloat(weight)) || !isFinite(weight)) {
+        APP.DOM.weight.val("").focus();
+        event.preventDefault();
+        return false;
+    }
+    if (parseFloat(weight) <= 0) {
+        APP.DOM.weight.val("").focus();
+        event.preventDefault();
+        return false;
+    }
+
+    // Check whether CAPTCHA is not empty
+    var captcha = APP.DOM.captcha.val().trim();
+    if (captcha.length <= 0) {
+        APP.DOM.captcha.val("").focus();
+        event.preventDefault();
+        return false;
+    }
 }
 
 
