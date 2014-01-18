@@ -19,6 +19,7 @@ $captcha = $jne->getCAPTCHA();
     </head>
     <body>
         <div class="container home">
+            <h1>Search JNE Tariff</h1>
             <form method="post" action="result.php" id="form">
                 <!-- Hidden fields. ========================================-->
                 <input type="hidden" id="session_id" 

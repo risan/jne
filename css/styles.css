@@ -53,12 +53,21 @@ input[type=submit]:hover {
             box-sizing: border-box;
 }
 
+.container h1 {
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: -20px -20px 10px -20px;
+    padding: 10px 20px;
+    color: #fff;
+    background: #444;
+}
+
 .container.home {
-    height: 300px;
+    height: 330px;
 }
 
 .container.result {
-    height: 330px;
+    height: 360px;
 }
 
 .input-group {

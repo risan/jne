@@ -21,6 +21,7 @@ $content = $data['content'];
     </head>
     <body>
         <div class="container result">
+            <h1>JNE Tariff Result</h1>
             <table class="header">
                 <tbody>
                     <tr>
