@@ -82,10 +82,10 @@ class JNE
     /**
      * Method for getting the result of tariff checker
      * 
-     * @return  void
+     * @return  string  The HTML page response
      * @access  public
      */
-    public function getResult()
+    public function getResponse()
     {
         // Get all required input
         $data = $this->getAllInput();
@@ -99,7 +99,7 @@ class JNE
             die();
         }
 
-        echo($response);
+        return $response;
     }
 
 
