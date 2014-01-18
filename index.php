@@ -78,7 +78,7 @@ $captcha = $jne->getCAPTCHA();
             </form>
         </div>
 
-        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="js/jquery.autocomplete.min.js"></script>
         <script src="js/main.js"></script>
     </body>
