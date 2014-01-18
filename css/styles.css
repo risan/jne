@@ -36,6 +36,29 @@ input[type=submit]:hover {
     background: #c0392b;
 }
 
+table {
+    font-size: 12px;
+    padding: 3px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+td, th {
+    text-align: left;
+    padding: 4px 5px;
+    border: 1px solid #ddd;
+}
+
+th {
+    color: #fff;
+    background: #e74c3c;
+    border: 1px solid #c0392b;
+}
+
+table.content {
+    width: 100%;
+}
+
 .container {
     width: 500px;
     padding: 20px;
