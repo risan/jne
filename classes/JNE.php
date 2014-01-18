@@ -92,7 +92,42 @@ class JNE
         // Send POST request
         $response = $this->sendPOSTRequest($data);
 
+        // If CAPTCHA is invalid, redirect back!
+        if (!$this->validateCAPTCHA($response)) {
+            $this->flash('old', $data);
+            header('Location: index.php');
+            die();
+        }
+
         echo $response;
+    }
+
+
+    /**
+     * Method for retrieving flashed old input
+     * 
+     * @param   string  $input  Input field to retrieve
+     * @return  mixed   An old input value
+     * @access  public
+     */
+    public function old($input)
+    {
+        // If there is no flashed old data, return null
+        if (!isset($_SESSION['old'])) return null;
+
+        // If session old is not an array, reset!
+        if (!is_array($_SESSION['old'])) {
+            unset($_SESSION['old']);
+            return null;
+        }
+
+        // If the requested key is not exits, reutrn null!
+        if (!isset($_SESSION['old'][$input])) retun null;
+
+        // Get the old input and unset it!
+        $old = $_SESSION['old'][$input];
+        unset($_SESSION['old'][$input]);
+        return $old;
     }
 
 
@@ -222,5 +257,19 @@ class JNE
     {
         if (strpos($html, 'Wrong Captcha') === false) return false;
         return true;
+    }
+
+
+    /**
+     * Method for flashing data to session
+     * 
+     * @param   string  $key    Key name for the flashed data
+     * @param   mixed   $value  Data to be flashed to session
+     * @return  void
+     * @access  private
+     */
+    private function flash($key, $value)
+    {
+        $_SESSION[$key] = $value;
     }
 }
