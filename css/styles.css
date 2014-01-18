@@ -23,6 +23,7 @@ input[type=text]:focus {
 }
 
 input[type=submit] {
+    display: inline-block;
     text-transform: uppercase;
     color: #fff;
     padding: 7px 20px;
@@ -36,38 +37,28 @@ input[type=submit]:hover {
     background: #c0392b;
 }
 
-table {
-    font-size: 12px;
-    padding: 3px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-}
-
-td, th {
-    text-align: left;
-    padding: 4px 5px;
-    border: 1px solid #ddd;
-}
-
-th {
-    color: #fff;
-    background: #e74c3c;
-    border: 1px solid #c0392b;
-}
-
-table.content {
-    width: 100%;
-}
-
 .container {
     width: 500px;
+    position: absolute;
     padding: 20px;
     margin: auto;
+    top: 0; 
+    left: 0; 
+    bottom: 0; 
+    right: 0;
     background: #fff;
     border: 1px solid #ddd;
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
             box-sizing: border-box;
+}
+
+.container.home {
+    height: 300px;
+}
+
+.container.result {
+    height: 330px;
 }
 
 .input-group {
@@ -99,6 +90,7 @@ table.content {
 }
 
 .autocomplete-suggestions { 
+    position: fixed;
     font-size: 14px;
     margin-top: 2px;
     background: #f4f4f4; 
@@ -120,4 +112,45 @@ table.content {
 .autocomplete-suggestions strong { 
     font-weight: normal; 
     color: #3399FF; 
+}
+
+table {
+    font-size: 12px;
+    padding: 3px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+td, th {
+    text-align: left;
+    padding: 4px 5px;
+    border: 1px solid #ddd;
+}
+
+th {
+    color: #fff;
+    background: #e74c3c;
+    border: 1px solid #c0392b;
+}
+
+table.content {
+    width: 100%;
+}
+
+.btn {
+    font-size: 11px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #aaa;
+    display: inline-block;
+    padding: 7px 10px;
+    background: #fff;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn:hover {
+    color: #888;
+    background: #ddd;
 }

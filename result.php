@@ -20,7 +20,7 @@ $content = $data['content'];
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
-        <div class="container">
+        <div class="container result">
             <table class="header">
                 <tbody>
                     <tr>
@@ -56,6 +56,8 @@ $content = $data['content'];
                     <?php endforeach; ?>
                 </tbody>
             </table>
+
+            <a href="index.php" class="btn">Check Another Tariff</a>
         </div>
     </body>
 </html>

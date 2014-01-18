@@ -18,7 +18,7 @@ $captcha = $jne->getCAPTCHA();
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
-        <div class="container">
+        <div class="container home">
             <form method="post" action="result.php" id="form">
                 <!-- Hidden fields. ========================================-->
                 <input type="hidden" id="session_id" 
