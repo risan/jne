@@ -103,6 +103,13 @@ class JNE
     }
 
 
+    /**
+     * Method for parsing response data
+     * 
+     * @param   string  $response HTML response page returned by JNE
+     * @return  array   An associative array that hold tariff data
+     * @access  public
+     */
     public function parseResponse($response)
     {
         // Create DOM document and DOM XPath object
@@ -115,9 +122,10 @@ class JNE
         // Get tariff content table
         $content = $this->getTariffContent($xpath);
 
-        echo '<pre>';
-        print_r($header);
-        print_r($content);
+        return array(
+            'header'    => $header,
+            'content'   => $content
+        );
     }
 
 
