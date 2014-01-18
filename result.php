@@ -6,5 +6,7 @@ require_once('classes/JNE.php');
 
 // Create an instance of JNE class
 $jne = new JNE();
-// Get the result!
-$jne->getResult();
+// Get the response
+$response = $jne->getResponse();
+// Parse response
+$jne->parseResponse($response);

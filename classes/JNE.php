@@ -103,6 +103,24 @@ class JNE
     }
 
 
+    public function parseResponse($response)
+    {
+        // Create DOM document and DOM XPath object
+        $dom = new DomDocument();
+        @$dom->loadHTML($response);
+        $xpath = new DomXPath($dom);
+
+        // Get header data
+        $header = $this->getTariffHeader($xpath);
+        // Get tariff content table
+        $content = $this->getTariffContent($xpath);
+
+        echo '<pre>';
+        print_r($header);
+        print_r($content);
+    }
+
+
     /**
      * Method for retrieving flashed old input
      * 
@@ -271,5 +289,105 @@ class JNE
     private function flash($key, $value)
     {
         $_SESSION[$key] = $value;
+    }
+
+
+    /**
+     * Method for parsing tariff content table header and meta
+     * 
+     * @param   object  $xpath  An instance of XPath class
+     * @return  array   An array that hole tariff content header
+     * @access  private
+     */
+    private function getTariffHeader($xpath)
+    {
+        // Get all rows header, based on 'trfH' class
+        $rows = $this->getNodesByTagClass($xpath, 'tr', 'trfH');
+
+        // Retrieve "from", "to", and "weight"
+        $from = $rows->item(0)->childNodes->item(2)->textContent;
+        $to = $rows->item(1)->childNodes->item(2)->textContent;
+        $weight = $rows->item(2)->childNodes->item(2)->textContent;
+
+        // Retrieve content table header
+        $contentHeader = array();
+        if ($rows->length >= 4) {
+            $cols = $rows->item(3)->childNodes;
+            for ($i = 0; $i < $cols->length; $i++) {
+                $data = trim($cols->item($i)->textContent);
+                if (strlen($data)) array_push($contentHeader, $data);
+            }
+        }
+
+        return array(
+            'from'      => $from,
+            'to'        => $to,
+            'weight'    => $weight,
+            'header'    => $contentHeader
+        );
+    }
+
+
+    /**
+     * Method for parsing tariff content table
+     * 
+     * @param   object  $xpath  An instance of XPath class
+     * @return  array   An array that hole tariff content data
+     * @access  private
+     */
+    private function getTariffContent($xpath)
+    {
+        // An array that would hold content
+        $content = array();
+
+        // Get all rows content, based on 'trfC' class
+        $rows = $this->getNodesByTagClass($xpath, 'tr', 'trfC');
+
+        // Loop through each content rows
+        for ($i = 0; $i < $rows->length; $i++) {
+            $content[$i] = array();                 // Create new array item
+            $cols = $rows->item($i)->childNodes;    // Get all columns
+            // Loop through each columns
+            for ($j = 0; $j < $cols->length; $j++) {
+                $data = trim($cols->item($j)->textContent);
+                if (strlen($data)) $content[$i][$j] = $data;
+            }
+        }
+
+        return $content;
+    }
+
+
+    /**
+     * Function to get nodes object by tag and class name
+     * 
+     * @param   object  $xpath      PHP XPath class instance
+     * @param   string  $tag        The HTML tag to look for
+     * @param   string  $className  The requested class name to search for
+     * @param   int     $index      An optional parameter which indicate an 
+     *                              index of node to return
+     * @return  mixed   Would return FALSE if there is no matched nodes or the
+     *                  requested nodes at specified index is not available.
+     *                  Would return a nodeList object if there is no index 
+     *                  specified. Would return a single node object at 
+     *                  specified index.
+     * @access  private
+     */
+    private function getNodesByTagClass($xpath, $tag, $className, $index = null)
+    {
+        // Use xPath to query nodes by tag and class name
+        $nodeList = $xpath->query("//{$tag}[contains(concat(' ', normalize-space(@class), ' '), ' $className ')]");
+
+        // If there is no nodes match, return false
+        if ($nodeList->length <= 0) return false;
+
+        // If $index is not specified, return all matched nodes
+        if (is_null($index)) return $nodeList;
+
+        // If requested $index is not available, return false
+        if ($index >= $nodeList->length) return false;
+
+        // Return nodes at requested $index
+        return $nodeList->item($index);
     }
 }
