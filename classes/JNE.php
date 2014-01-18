@@ -7,6 +7,8 @@ class JNE
     const CAPTCHA_URL = 'captcha.php';
     // LOCATIONS URL
     const LOCATIONS_URL = 'tariff_away.php';
+    // TARIFF ENDPOINT URL
+    const TARIFF_URL = 'index.php?mib=tariff&lang=IN';
 
 
     /**
@@ -127,5 +129,35 @@ class JNE
         }
 
         return $suggestions;
+    }
+
+
+    /**
+     * Method for sending POST request to tariff checker endpoint
+     * 
+     * @param   array   $data       An array that hold POST data
+     * @param   string  $sessionID  Session ID of CAPTCHA image
+     * @return  string  HTML string of response page
+     * @access  private
+     */
+    private function sendPOSTRequest($data, $sessionID)
+    {
+
+        // Prepare HTTP header
+        $options = array(
+            'http'  => array(
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n" .
+                            "Cookie: PHPSESSID={$sessionID}\r\n",
+                'method' => "POST",
+                'content'=> http_build_query($data)
+            )
+        );
+
+        // Create stream context resource
+        $context = stream_context_create($options);
+
+        // Finaly send request
+        $url = sprintf('%s/%s', self::BASE_URL, self::TARIFF_URL);
+        return file_get_contents($url, false, $context);
     }
 }
