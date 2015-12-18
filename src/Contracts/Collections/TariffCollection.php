@@ -2,5 +2,5 @@
 
 namespace Jne\Contracts\Collections;
 
-interface TariffCollection {
+interface TariffCollection extends Collection {
 }
