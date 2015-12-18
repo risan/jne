@@ -3,6 +3,7 @@
 namespace Jne;
 
 use GuzzleHttp\Client as Guzzle;
+use Psr\Http\Message\ResponseInterface;
 use Jne\Contracts\HttpClient as HttpClientInterface;
 
 class HttpClient extends Guzzle implements HttpClientInterface {
@@ -66,5 +67,29 @@ class HttpClient extends Guzzle implements HttpClientInterface {
     public function post($uri, array $data = [])
     {
         return $this->request('POST', $uri);
+    }
+
+    /**
+     * Parse JSON response.
+     *
+     * @param  Psr\Http\Message\ResponseInterface $response
+     * @return array
+     */
+    public function parseJsonResponse(ResponseInterface $response)
+    {
+        return json_decode($response->getBody(), 1);
+    }
+
+    /**
+     * Send HTTP GET request and JSON response.
+     *
+     * @param string $uri
+     * @return array
+     */
+    public function getAndParseJson($uri)
+    {
+        $response = $this->request('GET', $uri);
+
+        return $this->parseJsonResponse($response);
     }
 }

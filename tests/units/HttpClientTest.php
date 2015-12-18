@@ -31,4 +31,24 @@ class HttpClientTest extends PHPUnit_Framework_TestCase {
 
         $this->assertInstanceOf(ResponseInterface::class, $response);
     }
+
+    /** @test */
+    function http_client_can_parse_json_response()
+    {
+        $httpClient = new HttpClient('http://mockbin.org/bin/');
+
+        $response = $httpClient->get('3e5a46be-5d70-41c1-8d99-9effb755bbe2');
+
+        $this->assertEquals(['foo' => 'bar', 'baz' => 123], $httpClient->parseJsonResponse($response));
+    }
+
+    /** @test */
+    function http_client_can_send_get_request_and_parse_json_response()
+    {
+        $httpClient = new HttpClient('http://mockbin.org/bin/');
+
+        $data = $httpClient->getAndParseJson('3e5a46be-5d70-41c1-8d99-9effb755bbe2');
+
+        $this->assertEquals(['foo' => 'bar', 'baz' => 123], $data);
+    }
 }

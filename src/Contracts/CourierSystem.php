@@ -6,12 +6,20 @@ use Jne\Contracts\Foundation\Shipment;
 
 interface CourierSystem {
     /**
-     * Search for city.
+     * Search for available origin location.
      *
      * @param  string $query
-     * @return Jne\Contracts\Collections\CityCollection
+     * @return Jne\Contracts\Collections\LocationCollection
      */
-    public function searchCity($query);
+    public function searchOrigin($query);
+
+    /**
+     * Search for available destination location.
+     *
+     * @param  string $query
+     * @return Jne\Contracts\Collections\LocationCollection
+     */
+    public function searchDestination($query);
 
     /**
      * Get shipment's tariff.

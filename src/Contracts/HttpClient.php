@@ -2,6 +2,8 @@
 
 namespace Jne\Contracts;
 
+use Psr\Http\Message\ResponseInterface;
+
 interface HttpClient {
     /**
      * Get base uri.
@@ -26,4 +28,20 @@ interface HttpClient {
      * @return Psr\Http\Message\ResponseInterface
      */
     public function post($uri, array $data = []);
+
+    /**
+     * Parse JSON response.
+     *
+     * @param  Psr\Http\Message\ResponseInterface $response
+     * @return array
+     */
+    public function parseJsonResponse(ResponseInterface $response);
+
+    /**
+     * Send HTTP GET request and JSON response.
+     *
+     * @param string $uri
+     * @return array
+     */
+    public function getAndParseJson($uri);
 }
