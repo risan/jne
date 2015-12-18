@@ -1,0 +1,25 @@
+{
+  "name": "risan/jne",
+  "type": "library",
+  "description": "PHP HTTP client library for checking JNE shipment prices.",
+  "keywords": ["JNE", "Shipment", "Tariff", "Indonesia", "HTTP Client"],
+  "homepage": "https://github.com/risan/jne",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Risan Bagja Pradana",
+      "email": "risanbagja@gmail.com",
+      "homepage": "https://github.com/risan",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Jne\\": "src/"
+    }
+  },
+  "require": {
+    "guzzlehttp/guzzle": "^6.1",
+    "illuminate/support": "^5.1"
+  }
+}
