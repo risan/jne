@@ -8,19 +8,19 @@ interface Shipment {
      *
      * @return Jne\Contracts\Foundation\Location
      */
-    public function from();
+    public function origin();
 
     /**
      * Get shipment's destination.
      *
      * @return Jne\Contracts\Foundation\Location
      */
-    public function to();
+    public function destination();
 
     /**
      * Get shipment's weight.
      *
-     * @return float
+     * @return Jne\Contracts\Foundation\Weight
      */
     public function weight();
 }
