@@ -2,23 +2,23 @@
 
 namespace Jne\Contracts\Foundation;
 
-interface Shipment {
+interface Packet {
     /**
-     * Get shipment's origin.
+     * Get packet's origin.
      *
      * @return Jne\Contracts\Foundation\Location
      */
     public function origin();
 
     /**
-     * Get shipment's destination.
+     * Get packet's destination.
      *
      * @return Jne\Contracts\Foundation\Location
      */
     public function destination();
 
     /**
-     * Get shipment's weight.
+     * Get packet's weight.
      *
      * @return Jne\Contracts\Foundation\Weight
      */

@@ -1,12 +1,12 @@
 <?php
 
 use Jne\Jne;
+use Jne\Packet;
 use Jne\Weight;
 use Jne\Location;
-use Jne\Shipment;
 use Jne\Contracts\HttpClient as HttpClientInterface;
 use Jne\Contracts\Foundation\Location as LocationInterface;
-use Jne\Contracts\Collections\TariffCollection as TariffCollectionInterface;
+use Jne\Contracts\Collections\DeliveryCollection as DeliveryCollectionInterface;
 use Jne\Contracts\Collections\LocationCollection as LocationCollectionInterface;
 
 class JneTest extends PHPUnit_Framework_TestCase {
@@ -47,7 +47,7 @@ class JneTest extends PHPUnit_Framework_TestCase {
     }
 
     /** @test */
-    function jne_can_find_tariff()
+    function jne_can_deliver()
     {
         $jne = new Jne();
 
@@ -57,8 +57,8 @@ class JneTest extends PHPUnit_Framework_TestCase {
 
         $weight = Weight::fromKilograms(10);
 
-        $shipment = new Shipment($origin, $destination, $weight);
+        $packet = new Packet($origin, $destination, $weight);
 
-        $this->assertInstanceOf(TariffCollectionInterface::class, $jne->tariff($shipment));
+        $this->assertInstanceOf(DeliveryCollectionInterface::class, $jne->deliver($packet));
     }
 }

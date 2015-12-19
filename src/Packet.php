@@ -4,32 +4,32 @@ namespace Jne;
 
 use Jne\Contracts\Foundation\Weight as WeightInterface;
 use Jne\Contracts\Foundation\Location as LocationInterface;
-use Jne\Contracts\Foundation\Shipment as ShipmentInterface;
+use Jne\Contracts\Foundation\Packet as PacketInterface;
 
-class Shipment implements ShipmentInterface {
+class Packet implements PacketInterface {
     /**
-     * Shipment's origin.
+     * Packet's origin.
      *
      * @var Jne\Contracts\Foundation\Location
      */
     protected $origin;
 
     /**
-     * Shipment's destination.
+     * Packet's destination.
      *
      * @var Jne\Contracts\Foundation\Location
      */
     protected $destination;
 
     /**
-     * Shipment's weight.
+     * Packet's weight.
      *
      * @var Jne\Contracts\Foundation\Weight
      */
     protected $weight;
 
     /**
-     * Create a new instance of Shipment.
+     * Create a new instance of Packet.
      *
      * @param Jne\Contracts\Foundation\Location $origin
      * @param Jne\Contracts\Foundation\Location $destination
@@ -43,7 +43,7 @@ class Shipment implements ShipmentInterface {
     }
 
     /**
-     * Get shipment's origin.
+     * Get packet's origin.
      *
      * @return Jne\Contracts\Foundation\Location
      */
@@ -53,7 +53,7 @@ class Shipment implements ShipmentInterface {
     }
 
     /**
-     * Get shipment's destination.
+     * Get packet's destination.
      *
      * @return Jne\Contracts\Foundation\Location
      */
@@ -63,7 +63,7 @@ class Shipment implements ShipmentInterface {
     }
 
     /**
-     * Get shipment's weight.
+     * Get packet's weight.
      *
      * @return Jne\Contracts\Foundation\Weight
      */

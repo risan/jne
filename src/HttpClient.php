@@ -4,6 +4,7 @@ namespace Jne;
 
 use GuzzleHttp\Client as Guzzle;
 use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\DomCrawler\Crawler;
 use Jne\Contracts\HttpClient as HttpClientInterface;
 
 class HttpClient extends Guzzle implements HttpClientInterface {
@@ -66,7 +67,9 @@ class HttpClient extends Guzzle implements HttpClientInterface {
      */
     public function post($uri, array $data = [])
     {
-        return $this->request('POST', $uri);
+        return $this->request('POST', $uri, [
+            'form_params' => $data
+        ]);
     }
 
     /**
@@ -81,6 +84,19 @@ class HttpClient extends Guzzle implements HttpClientInterface {
     }
 
     /**
+     * Parse HTML response.
+     *
+     * @param  Psr\Http\Message\ResponseInterface $response
+     * @return Symfony\Component\DomCrawler\Crawler
+     */
+    public function parseHtmlResponse(ResponseInterface $response)
+    {
+        $html = $response->getBody()->getContents();
+
+        return new Crawler($html);
+    }
+
+    /**
      * Send HTTP GET request and JSON response.
      *
      * @param string $uri
@@ -88,8 +104,22 @@ class HttpClient extends Guzzle implements HttpClientInterface {
      */
     public function getAndParseJson($uri)
     {
-        $response = $this->request('GET', $uri);
+        $response = $this->get($uri);
 
         return $this->parseJsonResponse($response);
+    }
+
+    /**
+     * Send HTTP POST request.
+     *
+     * @param string $uri
+     * @param array  $data
+     * @return Symfony\Component\DomCrawler\Crawler
+     */
+    public function postAndParseHtml($uri, array $data = [])
+    {
+        $response = $this->post($uri, $data);
+
+        return $this->parseHtmlResponse($response);
     }
 }

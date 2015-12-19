@@ -38,6 +38,14 @@ interface HttpClient {
     public function parseJsonResponse(ResponseInterface $response);
 
     /**
+     * Parse HTML response.
+     *
+     * @param  Psr\Http\Message\ResponseInterface $response
+     * @return Symfony\Component\DomCrawler\Crawler
+     */
+    public function parseHtmlResponse(ResponseInterface $response);
+
+    /**
      * Send HTTP GET request and JSON response.
      *
      * @param string $uri
