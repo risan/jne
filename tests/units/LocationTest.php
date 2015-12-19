@@ -6,16 +6,16 @@ class LocationTest extends PHPUnit_Framework_TestCase {
     /** @test */
     function location_has_name()
     {
-        $location = new Location('Bandung', 'BDO10000');
+        $location = new Location('BANDUNG', 'QkRPMTAwMDA=');
 
-        $this->assertEquals('Bandung', $location->name());
+        $this->assertEquals('BANDUNG', $location->name());
     }
 
     /** @test */
     function location_has_code()
     {
-        $location = new Location('Bandung', 'BDO10000');
+        $location = new Location('BANDUNG', 'QkRPMTAwMDA=');
 
-        $this->assertEquals('BDO10000', $location->code());
+        $this->assertEquals('QkRPMTAwMDA=', $location->code());
     }
 }

@@ -1,10 +1,13 @@
 <?php
 
 use Jne\Jne;
-use Jne\Contracts\HttpClient;
-use Jne\Contracts\Foundation\Location;
-use Jne\Contracts\Collections\TariffCollection;
-use Jne\Contracts\Collections\LocationCollection;
+use Jne\Weight;
+use Jne\Location;
+use Jne\Shipment;
+use Jne\Contracts\HttpClient as HttpClientInterface;
+use Jne\Contracts\Foundation\Location as LocationInterface;
+use Jne\Contracts\Collections\TariffCollection as TariffCollectionInterface;
+use Jne\Contracts\Collections\LocationCollection as LocationCollectionInterface;
 
 class JneTest extends PHPUnit_Framework_TestCase {
     /** @test */
@@ -12,7 +15,7 @@ class JneTest extends PHPUnit_Framework_TestCase {
     {
         $jne = new Jne();
 
-        $this->assertInstanceOf(HttpClient::class, $jne->httpClient());
+        $this->assertInstanceOf(HttpClientInterface::class, $jne->httpClient());
     }
 
     /** @test */
@@ -22,10 +25,10 @@ class JneTest extends PHPUnit_Framework_TestCase {
 
         $origins = $jne->searchOrigin('Bandung');
 
-        $this->assertInstanceOf(LocationCollection::class, $origins);
+        $this->assertInstanceOf(LocationCollectionInterface::class, $origins);
 
         $origins->each(function($origin) {
-            $this->assertInstanceOf(Location::class, $origin);
+            $this->assertInstanceOf(LocationInterface::class, $origin);
         });
     }
 
@@ -36,10 +39,26 @@ class JneTest extends PHPUnit_Framework_TestCase {
 
         $destinations = $jne->searchDestination('Depok');
 
-        $this->assertInstanceOf(LocationCollection::class, $destinations);
+        $this->assertInstanceOf(LocationCollectionInterface::class, $destinations);
 
         $destinations->each(function($destination) {
-            $this->assertInstanceOf(Location::class, $destination);
+            $this->assertInstanceOf(LocationInterface::class, $destination);
         });
+    }
+
+    /** @test */
+    function jne_can_find_tariff()
+    {
+        $jne = new Jne();
+
+        $origin = new Location('BANDUNG', 'QkRPMTAwMDA=');
+
+        $destination = new Location('DEPOK', 'RFBLMTAwMDA=');
+
+        $weight = Weight::fromKilograms(10);
+
+        $shipment = new Shipment($origin, $destination, $weight);
+
+        $this->assertInstanceOf(TariffCollectionInterface::class, $jne->tariff($shipment));
     }
 }

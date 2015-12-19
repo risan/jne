@@ -10,15 +10,13 @@ class LocationMapperTest extends PHPUnit_Framework_TestCase {
     function setUp()
     {
         $this->rawLocations = [
-            'suggestions' => [
-                [
-                    'value' => 'Bandung',
-                    'code'  => 'BDO10000'
-                ],
-                [
-                    'value' => 'BANDUNG KIDUL,BANDUNG',
-                    'code'  => 'BDO10045'
-                ]
+            [
+                'label' => 'BANDUNG',
+                'code'  => 'QkRPMTAwMDA='
+            ],
+            [
+                'label' => 'BANDAACEH',
+                'code'  => 'QlRKMTAwMDA='
             ]
         ];
     }

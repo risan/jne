@@ -1,37 +1,26 @@
 <?php
 
+use Jne\Mappers\LocationMapper;
 use Jne\Collections\LocationCollection;
-use Jne\Contracts\Mapper as MapperInterface;
+use Jne\Contracts\Foundation\Location as LocationInterface;
 
 class LocationCollectionTest extends PHPUnit_Framework_TestCase {
     /** @test */
     function location_collection_can_instantiate_from_raw()
     {
-        $fooRaw = [1, 2, 3];
+        $rawLocations = [
+            [
+                'label' => 'BANDUNG',
+                'code'  => 'QkRPMTAwMDA='
+            ]
+        ];
 
-        $collection = LocationCollection::fromRaw($fooRaw, new FooMapper);
+        $collection = LocationCollection::fromRaw($rawLocations, new LocationMapper);
 
         $this->assertInstanceOf(LocationCollection::class, $collection);
 
-        $collection->each(function($foo) {
-            $this->assertInstanceOf(Foo::class, $foo);
+        $collection->each(function($location) {
+            $this->assertInstanceOf(LocationInterface::class, $location);
         });
-    }
-}
-
-class Foo {
-    public $bar;
-
-    public function __construct($bar)
-    {
-        $this->bar = $bar;
-    }
-}
-
-class FooMapper implements MapperInterface {
-    public function map(array $data) {
-        return array_map(function($foo) {
-            return new Foo($foo);
-        }, $data);
     }
 }

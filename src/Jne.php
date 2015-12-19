@@ -4,6 +4,7 @@ namespace Jne;
 
 use Jne\Mappers\LocationMapper;
 use Jne\Contracts\CourierSystem;
+use Jne\Collections\TariffCollection;
 use Jne\Contracts\Foundation\Shipment;
 use Jne\Collections\LocationCollection;
 
@@ -16,12 +17,12 @@ class Jne implements CourierSystem {
     /**
      * Search origin URI.
      */
-    const SEARCH_ORIGIN_URI = 'lib/origin.php';
+    const SEARCH_ORIGIN_URI = 'server/server_city_from.php';
 
     /**
      * Search destination URI.
      */
-    const SEARCH_DESTINATION_URI = 'lib/dest.php';
+    const SEARCH_DESTINATION_URI = 'server/server_city.php';
 
     /**
      * Http client instance.
@@ -52,7 +53,7 @@ class Jne implements CourierSystem {
      */
     public function searchOrigin($query)
     {
-        $uri = self::SEARCH_ORIGIN_URI . '?' . http_build_query(['query' => $query]);
+        $uri = self::SEARCH_ORIGIN_URI . '?' . http_build_query(['term' => $query]);
 
         $origins = $this->httpClient()->getAndParseJson($uri);
 
@@ -67,7 +68,7 @@ class Jne implements CourierSystem {
      */
     public function searchDestination($query)
     {
-        $uri = self::SEARCH_DESTINATION_URI . '?' . http_build_query(['query' => $query]);
+        $uri = self::SEARCH_DESTINATION_URI . '?' . http_build_query(['term' => $query]);
 
         $destinations = $this->httpClient()->getAndParseJson($uri);
 
@@ -82,5 +83,6 @@ class Jne implements CourierSystem {
      */
     public function tariff(Shipment $shipment)
     {
+        return new TariffCollection();
     }
 }

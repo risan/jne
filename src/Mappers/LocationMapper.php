@@ -15,7 +15,7 @@ class LocationMapper implements Mapper {
     public function map(array $data)
     {
         return array_map(function($location) {
-            return new Location($location['value'], $location['code']);
-        }, $data['suggestions']);
+            return new Location($location['label'], $location['code']);
+        }, $data);
     }
 }

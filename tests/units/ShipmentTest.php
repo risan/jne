@@ -15,9 +15,9 @@ class ShipmentTest extends PHPUnit_Framework_TestCase {
 
     function setUp()
     {
-        $this->origin = new Location('Bandung', 'BDO10000');
+        $this->origin = new Location('BANDUNG', 'QkRPMTAwMDA=');
 
-        $this->destination = new Location('Depok', 'DPK10000');
+        $this->destination = new Location('DEPOK', 'RFBLMTAwMDA=');
 
         $this->weight = Weight::fromKilograms(10);
 
