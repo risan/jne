@@ -39,7 +39,7 @@ Or you may also add `risan\jne` package into your `composer.json` file like so:
 
 ```bash
 "require": {
-  "risan/jne": "*"
+  "risan/jne": "~1.0"
 }
 ```
 
