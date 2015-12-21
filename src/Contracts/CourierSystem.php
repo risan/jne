@@ -2,7 +2,7 @@
 
 namespace Jne\Contracts;
 
-use Jne\Contracts\Foundation\Packet;
+use Jne\Contracts\Foundation\Package;
 
 interface CourierSystem {
     /**
@@ -22,10 +22,10 @@ interface CourierSystem {
     public function searchDestination($query);
 
     /**
-     * Deliver packet.
+     * Get delivery options.
      *
-     * @param Jne\Contracts\Foundation\Packet $packet
-     * @return Jne\Contracts\Collections\DeliveryCollection
+     * @param Jne\Contracts\Foundation\Package $package
+     * @return Jne\Contracts\Collections\DeliveryOptionCollection
      */
-    public function deliver(Packet $packet);
+    public function deliveryOptions(Package $package);
 }

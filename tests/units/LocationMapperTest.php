@@ -1,15 +1,15 @@
 <?php
 
-use Jne\Mappers\LocationMapper;
-use Jne\Contracts\Foundation\Location;
+use Jne\Mappers\ArrayMappers\LocationMapper;
 use Jne\Contracts\Collections\LocationCollection;
+use Jne\Contracts\Foundation\Location as LocationInterface;
 
 class LocationMapperTest extends PHPUnit_Framework_TestCase {
-    protected $rawLocations;
+    protected $arrayLocations;
 
     function setUp()
     {
-        $this->rawLocations = [
+        $this->arrayLocations = [
             [
                 'label' => 'BANDUNG',
                 'code'  => 'QkRPMTAwMDA='
@@ -26,12 +26,15 @@ class LocationMapperTest extends PHPUnit_Framework_TestCase {
     {
         $locationMapper = new LocationMapper();
 
-        $locations = $locationMapper->map($this->rawLocations);
+        $locations = $locationMapper->map($this->arrayLocations);
 
         $this->assertCount(2, $locations);
 
         foreach ($locations as $location) {
-            $this->assertInstanceOf(Location::class, $location);
+            $this->assertInstanceOf(LocationInterface::class, $location);
         }
+
+        $this->assertEquals('BANDAACEH', $locations[1]->name());
+        $this->assertEquals('QlRKMTAwMDA=', $locations[1]->code());
     }
 }

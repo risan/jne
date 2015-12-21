@@ -1,13 +1,13 @@
 <?php
 
 use Jne\Jne;
-use Jne\Packet;
 use Jne\Weight;
+use Jne\Package;
 use Jne\Location;
 use Jne\Contracts\HttpClient as HttpClientInterface;
 use Jne\Contracts\Foundation\Location as LocationInterface;
-use Jne\Contracts\Collections\DeliveryCollection as DeliveryCollectionInterface;
 use Jne\Contracts\Collections\LocationCollection as LocationCollectionInterface;
+use Jne\Contracts\Collections\DeliveryOptionCollection as DeliveryOptionCollectionInterface;
 
 class JneTest extends PHPUnit_Framework_TestCase {
     /** @test */
@@ -47,7 +47,7 @@ class JneTest extends PHPUnit_Framework_TestCase {
     }
 
     /** @test */
-    function jne_can_deliver()
+    function jne_can_retrieve_delivery_options()
     {
         $jne = new Jne();
 
@@ -57,8 +57,8 @@ class JneTest extends PHPUnit_Framework_TestCase {
 
         $weight = Weight::fromKilograms(10);
 
-        $packet = new Packet($origin, $destination, $weight);
+        $package = new Package($origin, $destination, $weight);
 
-        $this->assertInstanceOf(DeliveryCollectionInterface::class, $jne->deliver($packet));
+        $this->assertInstanceOf(DeliveryOptionCollectionInterface::class, $jne->deliveryOptions($package));
     }
 }

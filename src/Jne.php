@@ -2,13 +2,12 @@
 
 namespace Jne;
 
-use Jne\Delivery;
-use Jne\Mappers\LocationMapper;
 use Jne\Contracts\CourierSystem;
-use Jne\Collections\DeliveryCollection;
 use Jne\Collections\LocationCollection;
-use Symfony\Component\DomCrawler\Crawler;
-use Jne\Contracts\Foundation\Packet as PacketInterface;
+use Jne\Mappers\ArrayMappers\LocationMapper;
+use Jne\Collections\DeliveryOptionCollection;
+use Jne\Mappers\HtmlMappers\DeliveryOptionHtmlMapper;
+use Jne\Contracts\Foundation\Package as PackageInterface;
 
 class Jne implements CourierSystem {
     /**
@@ -64,7 +63,7 @@ class Jne implements CourierSystem {
 
         $origins = $this->httpClient()->getAndParseJson($uri);
 
-        return LocationCollection::fromRaw($origins, new LocationMapper);
+        return LocationCollection::fromArray($origins, new LocationMapper);
     }
 
     /**
@@ -79,50 +78,36 @@ class Jne implements CourierSystem {
 
         $destinations = $this->httpClient()->getAndParseJson($uri);
 
-        return LocationCollection::fromRaw($destinations, new LocationMapper);
+        return LocationCollection::fromArray($destinations, new LocationMapper);
     }
 
     /**
-     * Deliver packet.
+     * Get delivery options.
      *
-     * @param Jne\Contracts\Foundation\Packet $packet
-     * @return Jne\Contracts\Collections\DeliveryCollection
+     * @param Jne\Contracts\Foundation\Package $package
+     * @return Jne\Contracts\Collections\DeliveryOptionCollection
      */
-    public function deliver(PacketInterface $packet)
+    public function deliveryOptions(PackageInterface $package)
     {
-        $crawler = $this->httpClient()->postAndParseHtml(self::DELIVER_URI, $this->deliverParams($packet));
+        $deliveryOptions = $this->httpClient()->postAndParseHtml(self::DELIVER_URI, $this->deliveryOptionsParams($package));
 
-        $table = $crawler->filter('table')->eq(1);
-
-        $deliveries = $table->filter('tbody > tr')->each(function(Crawler $row) use($packet) {
-            $cols = $row->children();
-
-            return new Delivery(
-                $packet,
-                $cols->eq(0)->text(),
-                $cols->eq(1)->text(),
-                $cols->eq(2)->text(),
-                $cols->eq(3)->text()
-            );
-        });
-
-        return new DeliveryCollection($deliveries);
+        return DeliveryOptionCollection::fromHtml($deliveryOptions, new DeliveryOptionHtmlMapper);
     }
 
     /**
-     * Get deliver parameters.
+     * Get delivery options parameters.
      *
-     * @param  Jne\Contracts\Foundation\Packet $packet
+     * @param  Jne\Contracts\Foundation\Package $package
      * @return array
      */
-    protected function deliverParams(PacketInterface $packet)
+    protected function deliveryOptionsParams(PackageInterface $package)
     {
         return [
-            'origin' => $packet->origin()->code(),
-            'originlabel' => $packet->origin()->name(),
-            'dest' => $packet->destination()->code(),
-            'destlabel' => $packet->destination()->name(),
-            'weight' => $packet->weight()->kilograms()
+            'origin' => $package->origin()->code(),
+            'originlabel' => $package->origin()->name(),
+            'dest' => $package->destination()->code(),
+            'destlabel' => $package->destination()->name(),
+            'weight' => $package->weight()->kilograms()
         ];
     }
 }

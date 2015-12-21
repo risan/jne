@@ -1,32 +1,15 @@
 <?php
 
-use Jne\Packet;
 use Jne\Weight;
-use Jne\Delivery;
 use Jne\Location;
+use Jne\DeliveryOption;
 
-class DeliveryTest extends PHPUnit_Framework_TestCase {
-    protected $packet;
-
+class DeliveryOptionTest extends PHPUnit_Framework_TestCase {
     protected $delivery;
 
     function setUp()
     {
-        $origin = new Location('BANDUNG', 'QkRPMTAwMDA=');
-
-        $destination = new Location('DEPOK', 'RFBLMTAwMDA=');
-
-        $weight = Weight::fromKilograms(10);
-
-        $this->packet = new Packet($origin, $destination, $weight);
-
-        $this->delivery = new Delivery($this->packet, 'OKE', 'Dokumen / Paket', 10000, '2-3 Days');
-    }
-
-    /** @test */
-    function delivery_has_packet()
-    {
-        $this->assertInstanceOf(Packet::class, $this->delivery->packet());
+        $this->delivery = new DeliveryOption('OKE', 'Dokumen / Paket', 10000, '2-3 Days');
     }
 
     /** @test */

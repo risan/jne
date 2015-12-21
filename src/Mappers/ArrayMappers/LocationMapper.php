@@ -1,6 +1,6 @@
 <?php
 
-namespace Jne\Mappers;
+namespace Jne\Mappers\ArrayMappers;
 
 use Jne\Location;
 use Jne\Contracts\Mapper;

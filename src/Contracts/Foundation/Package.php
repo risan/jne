@@ -2,23 +2,23 @@
 
 namespace Jne\Contracts\Foundation;
 
-interface Packet {
+interface Package {
     /**
-     * Get packet's origin.
+     * Get package's origin.
      *
      * @return Jne\Contracts\Foundation\Location
      */
     public function origin();
 
     /**
-     * Get packet's destination.
+     * Get package's destination.
      *
      * @return Jne\Contracts\Foundation\Location
      */
     public function destination();
 
     /**
-     * Get packet's weight.
+     * Get package's weight.
      *
      * @return Jne\Contracts\Foundation\Weight
      */

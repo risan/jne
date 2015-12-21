@@ -2,14 +2,7 @@
 
 namespace Jne\Contracts\Foundation;
 
-interface Delivery {
-    /**
-     * Get delivery's packet.
-     *
-     * @return Jne\Contracts\Foundation\Packet
-     */
-    public function packet();
-
+interface DeliveryOption {
     /**
      * Get delivery's service.
      *

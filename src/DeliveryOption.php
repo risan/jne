@@ -2,16 +2,9 @@
 
 namespace Jne;
 
-use Jne\Contracts\Foundation\Delivery as DeliveryInterface;
+use Jne\Contracts\Foundation\DeliveryOption as DeliveryOptionInterface;
 
-class Delivery implements DeliveryInterface {
-    /**
-     * Delivery's packet.
-     *
-     * @var Jne\Contracts\Foundation\Packet
-     */
-    protected $packet;
-
+class DeliveryOption implements DeliveryOptionInterface {
     /**
      * Delivery's service type.
      *
@@ -43,29 +36,17 @@ class Delivery implements DeliveryInterface {
     /**
      * Create a new instance of delivery.
      *
-     * @param Jne\Contracts\Foundation\Packet $packet
      * @param string $service
      * @param string $type
      * @param string $tariff
      * @param string|null $estimatedDays
      */
-    public function __construct(Packet $packet, $service, $type, $tariff, $estimatedDays = null)
+    public function __construct($service, $type, $tariff, $estimatedDays = null)
     {
-        $this->packet = $packet;
         $this->service = $service;
         $this->type = $type;
         $this->tariff = $tariff;
         $this->estimatedDays = $estimatedDays;
-    }
-
-    /**
-     * Get delivery's packet.
-     *
-     * @return Jne\Contracts\Foundation\Packet
-     */
-    public function packet()
-    {
-        return $this->packet;
     }
 
     /**
