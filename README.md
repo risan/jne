@@ -1,4 +1,9 @@
-# JNE
+# JNE HTTP Client
+
+[![Build Status](https://img.shields.io/travis/risan/jne.svg?style=flat-square)](https://travis-ci.org/risan/jne)
+[![HHVM Tested](https://img.shields.io/hhvm/risan/jne.svg?style=flat-square)](https://travis-ci.org/risan/jne)
+[![Latest Stable Version](https://img.shields.io/packagist/v/risan/jne.svg?style=flat-square)](https://packagist.org/packages/risan/jne)
+[![License](https://img.shields.io/packagist/l/risan/jne.svg?style=flat-square)](https://packagist.org/packages/risan/jne)
 
 PHP HTTP client library for communicating with [JNE](http://www.jne.co.id/) website. This library can be used to retrieve JNE's delivery tariff and all available delivery locations.
 
