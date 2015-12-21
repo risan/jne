@@ -16,9 +16,9 @@ class HttpClientTest extends PHPUnit_Framework_TestCase {
     /** @test */
     function http_client_has_get_request()
     {
-        $httpClient = new HttpClient('http://mockbin.org/bin/');
+        $httpClient = new HttpClient('http://www.mocky.io/v2/');
 
-        $response = $httpClient->get('4a76d7e2-5c72-49c5-b6ea-388de8ca5041');
+        $response = $httpClient->get('5678638b0f00006a2a500861');
 
         $this->assertInstanceOf(ResponseInterface::class, $response);
     }
@@ -26,9 +26,9 @@ class HttpClientTest extends PHPUnit_Framework_TestCase {
     /** @test */
     function http_client_has_post_request()
     {
-        $httpClient = new HttpClient('http://mockbin.org/bin/');
+        $httpClient = new HttpClient('http://www.mocky.io/v2/');
 
-        $response = $httpClient->post('4a76d7e2-5c72-49c5-b6ea-388de8ca5041', []);
+        $response = $httpClient->post('5678638b0f00006a2a500861', []);
 
         $this->assertInstanceOf(ResponseInterface::class, $response);
     }
@@ -36,9 +36,9 @@ class HttpClientTest extends PHPUnit_Framework_TestCase {
     /** @test */
     function http_client_can_parse_json_response()
     {
-        $httpClient = new HttpClient('http://mockbin.org/bin/');
+        $httpClient = new HttpClient('http://www.mocky.io/v2/');
 
-        $response = $httpClient->get('3e5a46be-5d70-41c1-8d99-9effb755bbe2');
+        $response = $httpClient->get('5678638b0f00006a2a500861');
 
         $this->assertEquals(['foo' => 'bar', 'baz' => 123], $httpClient->parseJsonResponse($response));
     }
@@ -46,9 +46,9 @@ class HttpClientTest extends PHPUnit_Framework_TestCase {
     /** @test */
     function http_client_can_parse_html_response()
     {
-        $httpClient = new HttpClient('http://mockbin.org/bin/');
+        $httpClient = new HttpClient('http://www.mocky.io/v2/');
 
-        $response = $httpClient->get('4a76d7e2-5c72-49c5-b6ea-388de8ca5041');
+        $response = $httpClient->get('567864160f0000332a500862');
 
         $this->assertInstanceOf(Crawler::class, $httpClient->parseHtmlResponse($response));
     }
@@ -56,9 +56,9 @@ class HttpClientTest extends PHPUnit_Framework_TestCase {
     /** @test */
     function http_client_can_send_get_request_and_parse_json_response()
     {
-        $httpClient = new HttpClient('http://mockbin.org/bin/');
+        $httpClient = new HttpClient('http://www.mocky.io/v2/');
 
-        $data = $httpClient->getAndParseJson('3e5a46be-5d70-41c1-8d99-9effb755bbe2');
+        $data = $httpClient->getAndParseJson('5678638b0f00006a2a500861');
 
         $this->assertEquals(['foo' => 'bar', 'baz' => 123], $data);
     }
@@ -66,9 +66,9 @@ class HttpClientTest extends PHPUnit_Framework_TestCase {
     /** @test */
     function http_client_can_send_post_request_and_parse_html_response()
     {
-        $httpClient = new HttpClient('http://mockbin.org/bin/');
+        $httpClient = new HttpClient('http://www.mocky.io/v2/');
 
-        $data = $httpClient->postAndParseHtml('4a76d7e2-5c72-49c5-b6ea-388de8ca5041');
+        $data = $httpClient->postAndParseHtml('567864160f0000332a500862');
 
         $this->assertInstanceOf(Crawler::class, $data);
     }
