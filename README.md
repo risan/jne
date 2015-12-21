@@ -339,7 +339,7 @@ $deliveryOptions = $jne->deliveryOptions($package);
 
 The `$deliveryOptions` will contain the collection of `Jne\DeliveryOption` instances. If we printed out the `$deliveryOptions` to the console, we'll get a list of various delivery options:
 
-```
+```php
 Array
 (
   [0] => Jne\DeliveryOption Object
