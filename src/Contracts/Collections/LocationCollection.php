@@ -2,5 +2,6 @@
 
 namespace Jne\Contracts\Collections;
 
-interface LocationCollection extends Collection {
+interface LocationCollection extends Collection
+{
 }

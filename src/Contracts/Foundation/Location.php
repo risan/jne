@@ -2,7 +2,8 @@
 
 namespace Jne\Contracts\Foundation;
 
-interface Location {
+interface Location
+{
     /**
      * Get location's name.
      *

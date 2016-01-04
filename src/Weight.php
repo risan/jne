@@ -4,7 +4,8 @@ namespace Jne;
 
 use Jne\Contracts\Foundation\Weight as WeightInterface;
 
-class Weight implements WeightInterface {
+class Weight implements WeightInterface
+{
     /**
      * Grams per kilogram.
      */
@@ -35,10 +36,11 @@ class Weight implements WeightInterface {
     /**
      * Create weight from grams.
      *
-     * @param  float $grams
+     * @param float $grams
+     *
      * @return Jne\Contracts\Foudation\Weight
      */
-    static public function fromGrams($grams)
+    public static function fromGrams($grams)
     {
         return new static($grams);
     }
@@ -46,10 +48,11 @@ class Weight implements WeightInterface {
     /**
      * Create weight from kilograms.
      *
-     * @param  float $kilograms
+     * @param float $kilograms
+     *
      * @return Jne\Contracts\Foudation\Weight
      */
-    static public function fromKilograms($kilograms)
+    public static function fromKilograms($kilograms)
     {
         return new static($kilograms * self::GRAMS_PER_KILOGRAM);
     }
@@ -57,10 +60,11 @@ class Weight implements WeightInterface {
     /**
      * Create weight from punds.
      *
-     * @param  float $punds
+     * @param float $punds
+     *
      * @return Jne\Contracts\Foudation\Weight
      */
-    static public function fromPounds($pounds)
+    public static function fromPounds($pounds)
     {
         return new static($pounds * self::GRAMS_PER_POUND);
     }

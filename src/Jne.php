@@ -9,7 +9,8 @@ use Jne\Collections\DeliveryOptionCollection;
 use Jne\Mappers\HtmlMappers\DeliveryOptionHtmlMapper;
 use Jne\Contracts\Foundation\Package as PackageInterface;
 
-class Jne implements CourierSystem {
+class Jne implements CourierSystem
+{
     /**
      * JNE base URI.
      */
@@ -54,50 +55,54 @@ class Jne implements CourierSystem {
     /**
      * Search for available origin location.
      *
-     * @param  string $query
+     * @param string $query
+     *
      * @return Jne\Contracts\Collections\LocationCollection
      */
     public function searchOrigin($query)
     {
-        $uri = self::SEARCH_ORIGIN_URI . '?' . http_build_query(['term' => $query]);
+        $uri = self::SEARCH_ORIGIN_URI.'?'.http_build_query(['term' => $query]);
 
         $origins = $this->httpClient()->getAndParseJson($uri);
 
-        return LocationCollection::fromArray($origins, new LocationMapper);
+        return LocationCollection::fromArray($origins, new LocationMapper());
     }
 
     /**
      * Search for available destination location.
      *
-     * @param  string $query
+     * @param string $query
+     *
      * @return Jne\Contracts\Collections\LocationCollection
      */
     public function searchDestination($query)
     {
-        $uri = self::SEARCH_DESTINATION_URI . '?' . http_build_query(['term' => $query]);
+        $uri = self::SEARCH_DESTINATION_URI.'?'.http_build_query(['term' => $query]);
 
         $destinations = $this->httpClient()->getAndParseJson($uri);
 
-        return LocationCollection::fromArray($destinations, new LocationMapper);
+        return LocationCollection::fromArray($destinations, new LocationMapper());
     }
 
     /**
      * Get delivery options.
      *
      * @param Jne\Contracts\Foundation\Package $package
+     *
      * @return Jne\Contracts\Collections\DeliveryOptionCollection
      */
     public function deliveryOptions(PackageInterface $package)
     {
         $deliveryOptions = $this->httpClient()->postAndParseHtml(self::DELIVER_URI, $this->deliveryOptionsParams($package));
 
-        return DeliveryOptionCollection::fromHtml($deliveryOptions, new DeliveryOptionHtmlMapper);
+        return DeliveryOptionCollection::fromHtml($deliveryOptions, new DeliveryOptionHtmlMapper());
     }
 
     /**
      * Get delivery options parameters.
      *
-     * @param  Jne\Contracts\Foundation\Package $package
+     * @param Jne\Contracts\Foundation\Package $package
+     *
      * @return array
      */
     protected function deliveryOptionsParams(PackageInterface $package)
@@ -107,7 +112,7 @@ class Jne implements CourierSystem {
             'originlabel' => $package->origin()->name(),
             'dest' => $package->destination()->code(),
             'destlabel' => $package->destination()->name(),
-            'weight' => $package->weight()->kilograms()
+            'weight' => $package->weight()->kilograms(),
         ];
     }
 }

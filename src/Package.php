@@ -6,7 +6,8 @@ use Jne\Contracts\Foundation\Weight as WeightInterface;
 use Jne\Contracts\Foundation\Package as PackageInterface;
 use Jne\Contracts\Foundation\Location as LocationInterface;
 
-class Package implements PackageInterface {
+class Package implements PackageInterface
+{
     /**
      * Package's origin.
      *

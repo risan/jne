@@ -4,7 +4,8 @@ namespace Jne;
 
 use Jne\Contracts\Foundation\Location as LocationInterface;
 
-class Location implements LocationInterface {
+class Location implements LocationInterface
+{
     /**
      * Location's name.
      *

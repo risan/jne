@@ -2,7 +2,8 @@
 
 namespace Jne\Contracts\Foundation;
 
-interface Package {
+interface Package
+{
     /**
      * Get package's origin.
      *

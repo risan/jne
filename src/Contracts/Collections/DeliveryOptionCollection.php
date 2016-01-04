@@ -2,5 +2,6 @@
 
 namespace Jne\Contracts\Collections;
 
-interface DeliveryOptionCollection extends Collection {
+interface DeliveryOptionCollection extends Collection
+{
 }

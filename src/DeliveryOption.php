@@ -4,7 +4,8 @@ namespace Jne;
 
 use Jne\Contracts\Foundation\DeliveryOption as DeliveryOptionInterface;
 
-class DeliveryOption implements DeliveryOptionInterface {
+class DeliveryOption implements DeliveryOptionInterface
+{
     /**
      * Delivery's service type.
      *
@@ -36,9 +37,9 @@ class DeliveryOption implements DeliveryOptionInterface {
     /**
      * Create a new instance of delivery.
      *
-     * @param string $service
-     * @param string $type
-     * @param string $tariff
+     * @param string      $service
+     * @param string      $type
+     * @param string      $tariff
      * @param string|null $estimatedDays
      */
     public function __construct($service, $type, $tariff, $estimatedDays = null)

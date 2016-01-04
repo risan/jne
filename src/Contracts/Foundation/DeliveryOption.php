@@ -2,7 +2,8 @@
 
 namespace Jne\Contracts\Foundation;
 
-interface DeliveryOption {
+interface DeliveryOption
+{
     /**
      * Get delivery's service.
      *
