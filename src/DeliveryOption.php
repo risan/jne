@@ -23,7 +23,7 @@ class DeliveryOption implements DeliveryOptionInterface
     /**
      * Delivery's tariff.
      *
-     * @var float
+     * @var int|float
      */
     protected $tariff;
 
@@ -39,7 +39,7 @@ class DeliveryOption implements DeliveryOptionInterface
      *
      * @param string      $service
      * @param string      $type
-     * @param string      $tariff
+     * @param int|float   $tariff
      * @param string|null $estimatedDays
      */
     public function __construct($service, $type, $tariff, $estimatedDays = null)
@@ -73,7 +73,7 @@ class DeliveryOption implements DeliveryOptionInterface
     /**
      * Get delivery's tariff.
      *
-     * @return float
+     * @return int|float
      */
     public function tariff()
     {

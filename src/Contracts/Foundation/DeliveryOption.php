@@ -21,7 +21,7 @@ interface DeliveryOption
     /**
      * Get delivery's tariff.
      *
-     * @return float
+     * @return int|float
      */
     public function tariff();
 

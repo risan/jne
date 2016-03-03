@@ -34,7 +34,7 @@ class Jne implements CourierSystem
     /**
      * Http client instance.
      *
-     * @var Jne\Contracts\HttpClient
+     * @var \Jne\Contracts\HttpClient
      */
     protected $httpClient;
 
@@ -61,11 +61,7 @@ class Jne implements CourierSystem
      */
     public function searchOrigin($query)
     {
-        $uri = self::SEARCH_ORIGIN_URI.'?'.http_build_query(['term' => $query]);
-
-        $origins = $this->httpClient()->getAndParseJson($uri);
-
-        return LocationCollection::fromArray($origins, new LocationMapper());
+        return $this->searchLocation(self::SEARCH_ORIGIN_URI, $query);
     }
 
     /**
@@ -77,11 +73,24 @@ class Jne implements CourierSystem
      */
     public function searchDestination($query)
     {
-        $uri = self::SEARCH_DESTINATION_URI.'?'.http_build_query(['term' => $query]);
+        return $this->searchLocation(self::SEARCH_DESTINATION_URI, $query);
+    }
 
-        $destinations = $this->httpClient()->getAndParseJson($uri);
+    /**
+     * Search for available location.
+     *
+     * @param string $uri
+     * @param string $query
+     *
+     * @return \Jne\Contracts\Collections\LocationCollection
+     */
+    protected function searchLocation($uri, $query)
+    {
+        $uri .= '?'.http_build_query(['term' => $query]);
 
-        return LocationCollection::fromArray($destinations, new LocationMapper());
+        $locations = $this->httpClient()->getAndParseJson($uri);
+
+        return LocationCollection::fromArray($locations, new LocationMapper());
     }
 
     /**
