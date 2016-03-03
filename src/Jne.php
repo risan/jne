@@ -41,7 +41,7 @@ class Jne implements CourierSystem
     /**
      * Get http client instance.
      *
-     * @return Jne\Contracts\HttpClient
+     * @return \Jne\Contracts\HttpClient
      */
     public function httpClient()
     {
@@ -57,7 +57,7 @@ class Jne implements CourierSystem
      *
      * @param string $query
      *
-     * @return Jne\Contracts\Collections\LocationCollection
+     * @return \Jne\Contracts\Collections\LocationCollection
      */
     public function searchOrigin($query)
     {
@@ -73,7 +73,7 @@ class Jne implements CourierSystem
      *
      * @param string $query
      *
-     * @return Jne\Contracts\Collections\LocationCollection
+     * @return \Jne\Contracts\Collections\LocationCollection
      */
     public function searchDestination($query)
     {
@@ -87,9 +87,9 @@ class Jne implements CourierSystem
     /**
      * Get delivery options.
      *
-     * @param Jne\Contracts\Foundation\Package $package
+     * @param \Jne\Contracts\Foundation\Package $package
      *
-     * @return Jne\Contracts\Collections\DeliveryOptionCollection
+     * @return \Jne\Contracts\Collections\DeliveryOptionCollection
      */
     public function deliveryOptions(PackageInterface $package)
     {
@@ -101,7 +101,7 @@ class Jne implements CourierSystem
     /**
      * Get delivery options parameters.
      *
-     * @param Jne\Contracts\Foundation\Package $package
+     * @param \Jne\Contracts\Foundation\Package $package
      *
      * @return array
      */

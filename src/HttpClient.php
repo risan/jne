@@ -53,7 +53,7 @@ class HttpClient extends Guzzle implements HttpClientInterface
      *
      * @param string $uri
      *
-     * @return Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function get($uri)
     {
@@ -66,7 +66,7 @@ class HttpClient extends Guzzle implements HttpClientInterface
      * @param string $uri
      * @param array  $data
      *
-     * @return Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function post($uri, array $data = [])
     {
@@ -78,7 +78,7 @@ class HttpClient extends Guzzle implements HttpClientInterface
     /**
      * Parse JSON response.
      *
-     * @param Psr\Http\Message\ResponseInterface $response
+     * @param \Psr\Http\Message\ResponseInterface $response
      *
      * @return array
      */
@@ -90,9 +90,9 @@ class HttpClient extends Guzzle implements HttpClientInterface
     /**
      * Parse HTML response.
      *
-     * @param Psr\Http\Message\ResponseInterface $response
+     * @param \Psr\Http\Message\ResponseInterface $response
      *
-     * @return Symfony\Component\DomCrawler\Crawler
+     * @return \Symfony\Component\DomCrawler\Crawler
      */
     public function parseHtmlResponse(ResponseInterface $response)
     {
@@ -121,7 +121,7 @@ class HttpClient extends Guzzle implements HttpClientInterface
      * @param string $uri
      * @param array  $data
      *
-     * @return Symfony\Component\DomCrawler\Crawler
+     * @return \Symfony\Component\DomCrawler\Crawler
      */
     public function postAndParseHtml($uri, array $data = [])
     {

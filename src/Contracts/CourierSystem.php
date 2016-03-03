@@ -11,7 +11,7 @@ interface CourierSystem
      *
      * @param string $query
      *
-     * @return Jne\Contracts\Collections\LocationCollection
+     * @return \Jne\Contracts\Collections\LocationCollection
      */
     public function searchOrigin($query);
 
@@ -20,16 +20,16 @@ interface CourierSystem
      *
      * @param string $query
      *
-     * @return Jne\Contracts\Collections\LocationCollection
+     * @return \Jne\Contracts\Collections\LocationCollection
      */
     public function searchDestination($query);
 
     /**
      * Get delivery options.
      *
-     * @param Jne\Contracts\Foundation\Package $package
+     * @param \Jne\Contracts\Foundation\Package $package
      *
-     * @return Jne\Contracts\Collections\DeliveryOptionCollection
+     * @return \Jne\Contracts\Collections\DeliveryOptionCollection
      */
     public function deliveryOptions(Package $package);
 }

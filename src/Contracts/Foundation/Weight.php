@@ -9,7 +9,7 @@ interface Weight
      *
      * @param float $grams
      *
-     * @return Jne\Contracts\Foudation\Weight
+     * @return \Jne\Contracts\Foudation\Weight
      */
     public static function fromGrams($grams);
 
@@ -18,16 +18,16 @@ interface Weight
      *
      * @param float $kilograms
      *
-     * @return Jne\Contracts\Foudation\Weight
+     * @return \Jne\Contracts\Foudation\Weight
      */
     public static function fromKilograms($kilograms);
 
     /**
-     * Create weight from punds.
+     * Create weight from pounds.
      *
-     * @param float $punds
+     * @param float $pounds
      *
-     * @return Jne\Contracts\Foudation\Weight
+     * @return \Jne\Contracts\Foudation\Weight
      */
     public static function fromPounds($pounds);
 

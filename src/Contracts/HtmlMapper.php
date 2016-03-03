@@ -9,7 +9,7 @@ interface HtmlMapper
     /**
      * Map HTML DOM data to instance of object.
      *
-     * @param Symfony\Component\DomCrawler\Crawler $node
+     * @param \Symfony\Component\DomCrawler\Crawler $node
      *
      * @return mixed
      */

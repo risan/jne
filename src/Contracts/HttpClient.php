@@ -18,7 +18,7 @@ interface HttpClient
      *
      * @param string $uri
      *
-     * @return Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function get($uri);
 
@@ -28,14 +28,14 @@ interface HttpClient
      * @param string $uri
      * @param array  $data
      *
-     * @return Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function post($uri, array $data = []);
 
     /**
      * Parse JSON response.
      *
-     * @param Psr\Http\Message\ResponseInterface $response
+     * @param \Psr\Http\Message\ResponseInterface $response
      *
      * @return array
      */
@@ -44,9 +44,9 @@ interface HttpClient
     /**
      * Parse HTML response.
      *
-     * @param Psr\Http\Message\ResponseInterface $response
+     * @param \Psr\Http\Message\ResponseInterface $response
      *
-     * @return Symfony\Component\DomCrawler\Crawler
+     * @return \Symfony\Component\DomCrawler\Crawler
      */
     public function parseHtmlResponse(ResponseInterface $response);
 
