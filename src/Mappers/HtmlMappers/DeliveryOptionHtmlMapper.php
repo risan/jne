@@ -3,10 +3,10 @@
 namespace Jne\Mappers\HtmlMappers;
 
 use Jne\DeliveryOption;
-use Jne\Contracts\HtmlMapper;
+use Jne\Contracts\HtmlMapperInterface;
 use Symfony\Component\DomCrawler\Crawler;
 
-class DeliveryOptionHtmlMapper implements HtmlMapper
+class DeliveryOptionHtmlMapper implements HtmlMapperInterface
 {
     /**
      * Map HTML DOM data to instance of object.

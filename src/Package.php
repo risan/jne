@@ -2,39 +2,39 @@
 
 namespace Jne;
 
-use Jne\Contracts\Foundation\Weight as WeightInterface;
-use Jne\Contracts\Foundation\Package as PackageInterface;
-use Jne\Contracts\Foundation\Location as LocationInterface;
+use Jne\Contracts\Foundation\WeightInterface;
+use Jne\Contracts\Foundation\PackageInterface;
+use Jne\Contracts\Foundation\LocationInterface;
 
 class Package implements PackageInterface
 {
     /**
      * Package's origin.
      *
-     * @var \Jne\Contracts\Foundation\Location
+     * @var \Jne\Contracts\Foundation\LocationInterface
      */
     protected $origin;
 
     /**
      * Package's destination.
      *
-     * @var \Jne\Contracts\Foundation\Location
+     * @var \Jne\Contracts\Foundation\LocationInterface
      */
     protected $destination;
 
     /**
      * Package's weight.
      *
-     * @var \Jne\Contracts\Foundation\Weight
+     * @var \Jne\Contracts\Foundation\WeightInterface
      */
     protected $weight;
 
     /**
      * Create a new instance of Package.
      *
-     * @param \Jne\Contracts\Foundation\Location $origin
-     * @param \Jne\Contracts\Foundation\Location $destination
-     * @param \Jne\Contracts\Foundation\Weight   $weight
+     * @param \Jne\Contracts\Foundation\LocationInterface $origin
+     * @param \Jne\Contracts\Foundation\LocationInterface $destination
+     * @param \Jne\Contracts\Foundation\WeightInterface   $weight
      */
     public function __construct(LocationInterface $origin, LocationInterface $destination, WeightInterface $weight)
     {
@@ -46,7 +46,7 @@ class Package implements PackageInterface
     /**
      * Get package's origin.
      *
-     * @return \Jne\Contracts\Foundation\Location
+     * @return \Jne\Contracts\Foundation\LocationInterface
      */
     public function origin()
     {
@@ -56,7 +56,7 @@ class Package implements PackageInterface
     /**
      * Get package's destination.
      *
-     * @return \Jne\Contracts\Foundation\Location
+     * @return \Jne\Contracts\Foundation\LocationInterface
      */
     public function destination()
     {
@@ -66,7 +66,7 @@ class Package implements PackageInterface
     /**
      * Get package's weight.
      *
-     * @return \Jne\Contracts\Foundation\Weight
+     * @return \Jne\Contracts\Foundation\WeightInterface
      */
     public function weight()
     {

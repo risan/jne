@@ -2,7 +2,7 @@
 
 namespace Jne;
 
-use Jne\Contracts\Foundation\Location as LocationInterface;
+use Jne\Contracts\Foundation\LocationInterface;
 
 class Location implements LocationInterface
 {

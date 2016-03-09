@@ -1,13 +1,12 @@
 <?php
 
-namespace Jne\Collections;
+namespace Jne\Contracts\Collections;
 
+use Jne\Contracts\MapperInterface;
 use Jne\Contracts\HtmlMapperInterface;
 use Symfony\Component\DomCrawler\Crawler;
-use Illuminate\Support\Collection as BaseCollection;
-use Jne\Contracts\Collections\CollectionInterface;
 
-class Collection extends BaseCollection implements CollectionInterface
+interface CollectionInterface
 {
     /**
      * Create collection instance from raw array.
@@ -17,10 +16,7 @@ class Collection extends BaseCollection implements CollectionInterface
      *
      * @return \Jne\Contracts\CollectionsInterface
      */
-    public static function fromArray(array $data, Mapper $mapper)
-    {
-        return new static($mapper->map($data));
-    }
+    public static function fromArray(array $data, MapperInterface $mapper);
 
     /**
      * Create collection instance from HTML node.
@@ -30,8 +26,5 @@ class Collection extends BaseCollection implements CollectionInterface
      *
      * @return \Jne\Contracts\CollectionsInterface
      */
-    public static function fromHtml(Crawler $node, HtmlMapperInterface $htmlMapper)
-    {
-        return new static($htmlMapper->map($node));
-    }
+    public static function fromHtml(Crawler $node, HtmlMapperInterface $htmlMapper);
 }

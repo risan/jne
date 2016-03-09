@@ -2,14 +2,14 @@
 
 namespace Jne\Contracts\Foundation;
 
-interface Weight
+interface WeightInterface
 {
     /**
      * Create weight from grams.
      *
      * @param float $grams
      *
-     * @return \Jne\Contracts\Foudation\Weight
+     * @return \Jne\Contracts\Foudation\WeightInterface
      */
     public static function fromGrams($grams);
 
@@ -18,7 +18,7 @@ interface Weight
      *
      * @param float $kilograms
      *
-     * @return \Jne\Contracts\Foudation\Weight
+     * @return \Jne\Contracts\Foudation\WeightInterface
      */
     public static function fromKilograms($kilograms);
 
@@ -27,7 +27,7 @@ interface Weight
      *
      * @param float $pounds
      *
-     * @return \Jne\Contracts\Foudation\Weight
+     * @return \Jne\Contracts\Foudation\WeightInterface
      */
     public static function fromPounds($pounds);
 

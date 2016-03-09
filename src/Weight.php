@@ -2,7 +2,7 @@
 
 namespace Jne;
 
-use Jne\Contracts\Foundation\Weight as WeightInterface;
+use Jne\Contracts\Foundation\WeightInterface;
 
 class Weight implements WeightInterface
 {
@@ -38,7 +38,7 @@ class Weight implements WeightInterface
      *
      * @param float $grams
      *
-     * @return \Jne\Contracts\Foudation\Weight
+     * @return \Jne\Contracts\Foudation\WeightInterface
      */
     public static function fromGrams($grams)
     {
@@ -50,7 +50,7 @@ class Weight implements WeightInterface
      *
      * @param float $kilograms
      *
-     * @return \Jne\Contracts\Foudation\Weight
+     * @return \Jne\Contracts\Foudation\WeightInterface
      */
     public static function fromKilograms($kilograms)
     {
@@ -62,7 +62,7 @@ class Weight implements WeightInterface
      *
      * @param float $pounds
      *
-     * @return \Jne\Contracts\Foudation\Weight
+     * @return \Jne\Contracts\Foudation\WeightInterface
      */
     public static function fromPounds($pounds)
     {

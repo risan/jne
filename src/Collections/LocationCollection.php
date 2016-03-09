@@ -2,7 +2,7 @@
 
 namespace Jne\Collections;
 
-use Jne\Contracts\Collections\LocationCollection as LocationCollectionInterface;
+use Jne\Contracts\Collections\LocationCollectionInterface;
 
 class LocationCollection extends Collection implements LocationCollectionInterface
 {

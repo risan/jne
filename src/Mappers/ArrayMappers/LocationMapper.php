@@ -3,9 +3,9 @@
 namespace Jne\Mappers\ArrayMappers;
 
 use Jne\Location;
-use Jne\Contracts\Mapper;
+use Jne\Contracts\MapperInterface;
 
-class LocationMapper implements Mapper
+class LocationMapper implements MapperInterface
 {
     /**
      * Map array data to instance of object.

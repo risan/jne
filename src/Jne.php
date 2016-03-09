@@ -2,14 +2,14 @@
 
 namespace Jne;
 
-use Jne\Contracts\CourierSystem;
+use Jne\Contracts\CourierSystemInterface;
 use Jne\Collections\LocationCollection;
 use Jne\Mappers\ArrayMappers\LocationMapper;
 use Jne\Collections\DeliveryOptionCollection;
 use Jne\Mappers\HtmlMappers\DeliveryOptionHtmlMapper;
-use Jne\Contracts\Foundation\Package as PackageInterface;
+use Jne\Contracts\Foundation\PackageInterface;
 
-class Jne implements CourierSystem
+class Jne implements CourierSystemInterface
 {
     /**
      * JNE base URI.
@@ -41,7 +41,7 @@ class Jne implements CourierSystem
     /**
      * Get http client instance.
      *
-     * @return \Jne\Contracts\HttpClient
+     * @return \Jne\Contracts\HttpClientInterface
      */
     public function httpClient()
     {
@@ -57,7 +57,7 @@ class Jne implements CourierSystem
      *
      * @param string $query
      *
-     * @return \Jne\Contracts\Collections\LocationCollection
+     * @return \Jne\Contracts\Collections\LocationCollectionInterface
      */
     public function searchOrigin($query)
     {
@@ -69,7 +69,7 @@ class Jne implements CourierSystem
      *
      * @param string $query
      *
-     * @return \Jne\Contracts\Collections\LocationCollection
+     * @return \Jne\Contracts\Collections\LocationCollectionInterface
      */
     public function searchDestination($query)
     {
@@ -82,7 +82,7 @@ class Jne implements CourierSystem
      * @param string $uri
      * @param string $query
      *
-     * @return \Jne\Contracts\Collections\LocationCollection
+     * @return \Jne\Contracts\Collections\LocationCollectionInterface
      */
     protected function searchLocation($uri, $query)
     {
@@ -96,9 +96,9 @@ class Jne implements CourierSystem
     /**
      * Get delivery options.
      *
-     * @param \Jne\Contracts\Foundation\Package $package
+     * @param \Jne\Contracts\Foundation\PackageInterface $package
      *
-     * @return \Jne\Contracts\Collections\DeliveryOptionCollection
+     * @return \Jne\Contracts\Collections\DeliveryOptionCollectionInterface
      */
     public function deliveryOptions(PackageInterface $package)
     {
@@ -110,7 +110,7 @@ class Jne implements CourierSystem
     /**
      * Get delivery options parameters.
      *
-     * @param \Jne\Contracts\Foundation\Package $package
+     * @param \Jne\Contracts\Foundation\PackageInterface $package
      *
      * @return array
      */

@@ -4,7 +4,7 @@ namespace Jne\Contracts;
 
 use Symfony\Component\DomCrawler\Crawler;
 
-interface HtmlMapper
+interface HtmlMapperInterface
 {
     /**
      * Map HTML DOM data to instance of object.

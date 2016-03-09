@@ -2,7 +2,7 @@
 
 namespace Jne;
 
-use Jne\Contracts\Foundation\DeliveryOption as DeliveryOptionInterface;
+use Jne\Contracts\Foundation\DeliveryOptionInterface;
 
 class DeliveryOption implements DeliveryOptionInterface
 {

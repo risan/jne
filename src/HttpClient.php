@@ -5,7 +5,7 @@ namespace Jne;
 use GuzzleHttp\Client as Guzzle;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\DomCrawler\Crawler;
-use Jne\Contracts\HttpClient as HttpClientInterface;
+use Jne\Contracts\HttpClientInterface;
 
 class HttpClient extends Guzzle implements HttpClientInterface
 {

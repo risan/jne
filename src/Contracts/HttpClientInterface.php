@@ -4,7 +4,7 @@ namespace Jne\Contracts;
 
 use Psr\Http\Message\ResponseInterface;
 
-interface HttpClient
+interface HttpClientInterface
 {
     /**
      * Get base uri.

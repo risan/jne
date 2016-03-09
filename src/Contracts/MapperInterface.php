@@ -2,7 +2,7 @@
 
 namespace Jne\Contracts;
 
-interface Mapper
+interface MapperInterface
 {
     /**
      * Map array data to instance of object.
