@@ -34,7 +34,7 @@ class Jne implements CourierSystemInterface
     /**
      * Http client instance.
      *
-     * @var \Jne\Contracts\HttpClient
+     * @var \Jne\Contracts\HttpClientInterface
      */
     protected $httpClient;
 
