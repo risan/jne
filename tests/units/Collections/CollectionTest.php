@@ -1,9 +1,9 @@
 <?php
 
 use Jne\Collections\Collection;
+use Jne\Contracts\MapperInterface;
+use Jne\Contracts\HtmlMapperInterface;
 use Symfony\Component\DomCrawler\Crawler;
-use Jne\Contracts\Mapper as MapperInterface;
-use Jne\Contracts\HtmlMapper as HtmlMapperInterface;
 
 class CollectionTest extends PHPUnit_Framework_TestCase {
     /** @test */

@@ -1,7 +1,7 @@
 <?php
 
 use Jne\Weight;
-use Jne\Contracts\Foundation\Weight as WeightInterface;
+use Jne\Contracts\Foundation\WeightInterface;
 
 class WeightTest extends PHPUnit_Framework_TestCase {
     /** @test */

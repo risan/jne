@@ -4,10 +4,10 @@ use Jne\Jne;
 use Jne\Weight;
 use Jne\Package;
 use Jne\Location;
-use Jne\Contracts\HttpClient as HttpClientInterface;
-use Jne\Contracts\Foundation\Location as LocationInterface;
-use Jne\Contracts\Collections\LocationCollection as LocationCollectionInterface;
-use Jne\Contracts\Collections\DeliveryOptionCollection as DeliveryOptionCollectionInterface;
+use Jne\Contracts\HttpClientInterface;
+use Jne\Contracts\Foundation\LocationInterface;
+use Jne\Contracts\Collections\LocationCollectionInterface;
+use Jne\Contracts\Collections\DeliveryOptionCollectionInterface;
 
 class JneTest extends PHPUnit_Framework_TestCase {
     /** @test */

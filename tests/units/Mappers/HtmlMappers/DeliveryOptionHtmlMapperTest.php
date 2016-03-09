@@ -1,9 +1,8 @@
 <?php
 
 use Symfony\Component\DomCrawler\Crawler;
-use Jne\Contracts\Collections\LocationCollection;
 use Jne\Mappers\HtmlMappers\DeliveryOptionHtmlMapper;
-use Jne\Contracts\Foundation\DeliveryOption as DeliveryOptionInterface;
+use Jne\Contracts\Foundation\DeliveryOptionInterface;
 
 class DeliveryOptionHtmlMapperTest extends PHPUnit_Framework_TestCase {
     protected $htmlDeliveryOptions;

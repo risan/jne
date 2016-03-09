@@ -2,7 +2,7 @@
 
 use Jne\Collections\LocationCollection;
 use Jne\Mappers\ArrayMappers\LocationMapper;
-use Jne\Contracts\Foundation\Location as LocationInterface;
+use Jne\Contracts\Foundation\LocationInterface;
 
 class LocationCollectionTest extends PHPUnit_Framework_TestCase {
     /** @test */

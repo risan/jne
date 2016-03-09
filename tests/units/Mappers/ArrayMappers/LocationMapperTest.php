@@ -1,8 +1,7 @@
 <?php
 
 use Jne\Mappers\ArrayMappers\LocationMapper;
-use Jne\Contracts\Collections\LocationCollection;
-use Jne\Contracts\Foundation\Location as LocationInterface;
+use Jne\Contracts\Foundation\LocationInterface;
 
 class LocationMapperTest extends PHPUnit_Framework_TestCase {
     protected $arrayLocations;
