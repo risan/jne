@@ -5,6 +5,7 @@
 [![StyleCI](https://styleci.io/repos/16021517/shield?style=flat)](https://styleci.io/repos/16021517)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/risan/jne/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/risan/jne/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/risan/jne/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/risan/jne/?branch=master)
+[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/8976da0e-8a90-4a6b-a839-ff02e1ef680d.svg)](https://insight.sensiolabs.com/projects/8976da0e-8a90-4a6b-a839-ff02e1ef680d)
 [![Latest Stable Version](https://poser.pugx.org/risan/jne/v/stable)](https://packagist.org/packages/risan/jne)
 [![License](https://poser.pugx.org/risan/jne/license)](https://packagist.org/packages/risan/jne)
 
@@ -47,7 +48,7 @@ Or you may also add `risan\jne` package into your `composer.json` file like so:
 
 ```bash
 "require": {
-  "risan/jne": "~1.0"
+  "risan/jne": "~1.1"
 }
 ```
 
