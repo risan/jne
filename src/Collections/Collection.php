@@ -2,6 +2,7 @@
 
 namespace Jne\Collections;
 
+use Jne\Contracts\MapperInterface;
 use Jne\Contracts\HtmlMapperInterface;
 use Symfony\Component\DomCrawler\Crawler;
 use Illuminate\Support\Collection as BaseCollection;
@@ -17,7 +18,7 @@ class Collection extends BaseCollection implements CollectionInterface
      *
      * @return \Jne\Contracts\CollectionsInterface
      */
-    public static function fromArray(array $data, Mapper $mapper)
+    public static function fromArray(array $data, MapperInterface $mapper)
     {
         return new static($mapper->map($data));
     }
